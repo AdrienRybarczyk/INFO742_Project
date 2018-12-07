@@ -3,12 +3,18 @@ public class Annonce {
 	public int id;
 	public String adresse;
 	public String description;
+	public String titre;
+	public Utilisateur util;
 	public boolean etat;
 	
-	public Annonce(int id, String adresse, String description, boolean etat) {
+	
+	public Annonce(int id, String adresse, String description, String titre, Utilisateur util, boolean etat) {
+		this.id = id;
 		this.adresse = adresse;
 		this.description = description;
-		this.etat = true;
+		this.titre = titre;
+		this.util = util;
+		this.etat = etat;
 	}
 
 	/**

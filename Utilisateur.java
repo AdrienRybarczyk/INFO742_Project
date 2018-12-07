@@ -6,7 +6,7 @@ public class Utilisateur implements Observer {
 	public String nom;
 	public String prenom;
 	public String ecole;
-	public String identifiant;
+	public String mail;
 	public String password;
 	public List<Annonce> annonces;
 	public List<Avis> liste_avis;
