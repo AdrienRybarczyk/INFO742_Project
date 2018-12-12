@@ -1,12 +1,12 @@
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Avis {
-	public int id;
+	private static final AtomicInteger count = new AtomicInteger(0); //to avoid problem with thread
+	private int id;
 	public String description;
 	
-	
-	
-	public Avis(int id, String description) {
-		this.id = id;
+	public Avis(String description) {
+		this.id = count.incrementAndGet(); 
 		this.description = description;
 	}
 	

@@ -21,6 +21,12 @@ public class Lobby {
 	}
 	
 	// Notify observers of the list 
+	public void notifyObservers(String info){
+		for (Observer ob: observers){
+			ob.updateFromLobby(info);
+		}
+	}
+	
 	public void notifyObservers(){
 		if (this.lastNews != null)
 			for (Observer ob: observers){
