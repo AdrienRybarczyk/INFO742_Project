@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Annonce {
@@ -8,15 +10,35 @@ public class Annonce {
 	public String titre;
 	public Utilisateur util;
 	public boolean etat;
+	public List<Commentaire> liste_commentaire;
 	
 	
-	public Annonce(String adresse, String description, String titre, Utilisateur util, boolean etat) {
+	public Annonce(String adresse, String description, String titre, Utilisateur util) {
 		this.id = count.incrementAndGet(); 
 		this.adresse = adresse;
 		this.description = description;
 		this.titre = titre;
 		this.util = util;
-		this.etat = etat;
+		this.etat = true;
+		this.liste_commentaire = new ArrayList<Commentaire>();
+	}
+	
+	public void addCommentaire(Commentaire com) {
+		liste_commentaire.add(com);
+	}
+	
+	public void removeCommentaire(Commentaire com) {
+		liste_commentaire.remove(com);
+	}
+	
+	public List<Commentaire> getListeCommentaire(){
+		return liste_commentaire;
+	}
+	
+	public void getInformationFromCommentaire() {
+		for (Commentaire com: liste_commentaire){
+			Logger.getInstance().info("Commentaire from "+ com.getUtil().getNom() + com.getUtil().getPrenom() + com.getUtil().getMail() + " info " + com.getDescription());			
+		}
 	}
 
 	/**

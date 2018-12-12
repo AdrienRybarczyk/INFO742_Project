@@ -5,7 +5,7 @@ public class PlatStore extends Lobby{
 	public List<Annonce> liste_annonces;
 	
 
-	public PlatStore(List<Annonce> liste_annonces) {
+	public PlatStore() {
 		this.liste_annonces = new ArrayList<Annonce>();
 	}
 
@@ -46,5 +46,15 @@ public class PlatStore extends Lobby{
 			}
 		}
 		return annoncedispo;
+	}
+	
+	public List<Annonce> rechercheFiltre(String filtre){
+		List<Annonce> annoncefiltre = new ArrayList<Annonce>();
+		for (Annonce an: liste_annonces){
+			if(an.getTitre().contains(filtre)==true || an.getDescription().contains(filtre)==true) {
+				annoncefiltre.add(an);
+			}
+		}
+		return annoncefiltre;
 	}
 }

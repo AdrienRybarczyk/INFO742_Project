@@ -10,6 +10,7 @@ public class Utilisateur implements Observer {
 	public String password;
 	public List<Annonce> annonces;
 	public List<Avis> liste_avis;
+	public List<Commentaire> liste_commentaire;
 	public PlatStore store;
 	
 	
@@ -22,11 +23,12 @@ public class Utilisateur implements Observer {
 		this.password = password;
 		this.liste_avis = new ArrayList<Avis>();
 		this.annonces = new ArrayList<Annonce>();
+		this.liste_commentaire = new ArrayList<Commentaire>();
 		this.store = store;
 	}
 
 	public void deposerAnnonce(String adresse, String description, String titre) {
-		Annonce an= new Annonce(adresse,description,titre,this,true);
+		Annonce an= new Annonce(adresse,description,titre,this);
 		store.registerAnnonce(an);
 		annonces.add(an);
 	}
@@ -39,12 +41,31 @@ public class Utilisateur implements Observer {
 		store.getInformationFromAnnonces();
 	}
 	
+	public List<Annonce> rechercherAnnonce(String filtre) {
+		return store.rechercheFiltre(filtre);	
+	}
+	
+	
 	public void ajouterAvis(Avis av) {
 		liste_avis.add(av);
 	}
 	
 	public void supprimerAvis(Avis av){
 		liste_avis.remove(av);
+	}
+	
+	public void createCommentaire(String description) {
+		Commentaire newComment = new Commentaire(description,this);
+		liste_commentaire.add(newComment);
+	}
+	
+	public void getCommentaireFromAnnonce(int id) {
+		Annonce an = store.getInformationFromSpecificAnnonce(id);
+		an.getInformationFromCommentaire();	
+	}
+	
+	public void removeCommentaire(Commentaire com) {
+		liste_commentaire.remove(com);
 	}
 	
 	public void creerAvis(String description) {

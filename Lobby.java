@@ -27,6 +27,7 @@ public class Lobby {
 		}
 	}
 	
+	// Notify observers of the list 
 	public void notifyObservers(){
 		if (this.lastNews != null)
 			for (Observer ob: observers){
