@@ -11,7 +11,7 @@ class AnnonceAddCommentaire {
 	@Test
 	void testTrue() {
 		Annonce annonce=new Annonce(null,null,null,null);
-		Commentaire com=new Commentaire("yo les reubs",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
 		boolean test=false;
 		annonce.addCommentaire(com);
 		for(Commentaire i:annonce.getListeCommentaire()) {
@@ -28,9 +28,9 @@ class AnnonceAddCommentaire {
 	@Test
 	void testFalse() {
 		Annonce annonce=new Annonce(null,null,null,null);
-		Commentaire com=new Commentaire("yo les reubs",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
 		boolean test=false;
-		annonce.addCommentaire(new Commentaire("yo les couz",new Utilisateur(0, null, null, null, null, null, null)));
+		annonce.addCommentaire(new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null)));
 		for(Commentaire i:annonce.getListeCommentaire()) {
 			if(i.equals(com)) {
 				test=true;

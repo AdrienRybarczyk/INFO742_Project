@@ -11,7 +11,7 @@ class AnnonceRemoveCommentaire {
 	@Test
 	void testTrue() {
 		Annonce annonce=new Annonce(null,null,null,null);
-		Commentaire com=new Commentaire("yo les reubs",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
 		boolean test=true;
 		annonce.addCommentaire(com);
 		annonce.removeCommentaire(com);
@@ -29,7 +29,7 @@ class AnnonceRemoveCommentaire {
 	@Test
 	void testFalse() {
 		Annonce annonce=new Annonce(null,null,null,null);
-		Commentaire com=new Commentaire("yo les reubs",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
 		boolean test=false;
 		annonce.addCommentaire(com);
 		for(Commentaire i:annonce.getListeCommentaire()) {
