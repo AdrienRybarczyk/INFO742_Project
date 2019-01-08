@@ -10,16 +10,19 @@ public class Annonce {
 	public String titre;
 	public Utilisateur util;
 	public boolean etat;
+	public PlatFactory platFactory;
+	public Plat platAnnonce;
 	public List<Commentaire> liste_commentaire;
 	
-	
-	public Annonce(String adresse, String description, String titre, Utilisateur util) {
+	public Annonce(String type, String adresse, String description, String titre, Utilisateur util) {
 		this.id = count.incrementAndGet(); 
 		this.adresse = adresse;
 		this.description = description;
 		this.titre = titre;
 		this.util = util;
 		this.etat = true;
+		this.platFactory = new PlatFactory();
+		this.platAnnonce = platFactory.createPlat(type);
 		this.liste_commentaire = new ArrayList<Commentaire>();
 	}
 	
@@ -37,7 +40,7 @@ public class Annonce {
 	
 	public void getInformationFromCommentaire() {
 		for (Commentaire com: liste_commentaire){
-			Logger.getInstance().info("Commentaire from "+ com.getUtil().getNom() + com.getUtil().getPrenom() + com.getUtil().getMail() + " info " + com.getDescription());			
+			Logger.getInstance().info("Comment from "+ com.getUtil().getNom() + " "+ com.getUtil().getPrenom() + com.getUtil().getMail() + " about " + com.getDescription());			
 		}
 	}
 
@@ -110,6 +113,20 @@ public class Annonce {
 	 */
 	public void setEtat(boolean etat) {
 		this.etat = etat;
+	}
+
+	/**
+	 * @return the platAnnonce
+	 */
+	public Plat getPlatAnnonce() {
+		return platAnnonce;
+	}
+
+	/**
+	 * @param platAnnonce the platAnnonce to set
+	 */
+	public void setPlatAnnonce(Plat platAnnonce) {
+		this.platAnnonce = platAnnonce;
 	}
 	
 	

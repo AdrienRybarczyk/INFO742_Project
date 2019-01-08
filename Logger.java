@@ -16,4 +16,8 @@ public class Logger {
 	public void warning(String message) {
 		System.err.println("warning: "+message);
 	}
+	
+	public void decorator(String message) {
+		System.out.println("avec"+message);
+	}
 }

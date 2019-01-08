@@ -4,10 +4,12 @@ public class Avis {
 	private static final AtomicInteger count = new AtomicInteger(0); //to avoid problem with thread
 	private int id;
 	public String description;
+	public Utilisateur util;
 	
-	public Avis(String description) {
+	public Avis(String description, Utilisateur util) {
 		this.id = count.incrementAndGet(); 
 		this.description = description;
+		this.util = util;
 	}
 	
 	/**
@@ -34,5 +36,4 @@ public class Avis {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 }

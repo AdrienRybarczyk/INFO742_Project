@@ -11,12 +11,12 @@ class AnnonceTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		annonce=new Annonce(null,null,null,null);
+		annonce=new Annonce(null,null,null,null,null);
 	}
 	
 	@Test
 	void testRemoveCommentaire() {
-		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(null, null, null, null, null, null),annonce);
 		boolean test=true;
 		annonce.addCommentaire(com);
 		annonce.removeCommentaire(com);
@@ -39,10 +39,10 @@ class AnnonceTest {
 	
 	@Test
 	void testAddCommentaire() {
-		Commentaire com=new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null));
+		Commentaire com=new Commentaire("coucou",new Utilisateur(null, null, null, null, null, null),annonce);
 		//Test faux avec un autre commentaire ajouté
 		boolean test=false;
-		annonce.addCommentaire(new Commentaire("coucou",new Utilisateur(0, null, null, null, null, null, null)));
+		annonce.addCommentaire(new Commentaire("coucou",new Utilisateur(null, null, null, null, null, null),annonce));
 		for(Commentaire i:annonce.getListeCommentaire()) {
 			if(i.equals(com)) {
 				test=true;

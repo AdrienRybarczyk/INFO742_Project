@@ -5,11 +5,13 @@ public class Commentaire {
 	private int id;
 	public String description;
 	public Utilisateur util;
+	public Annonce annonce;
 	
-	public Commentaire(String description, Utilisateur util) {
+	public Commentaire(String description, Utilisateur util, Annonce annonce) {
 		this.id = count.incrementAndGet(); 
 		this.description = description;
 		this.util = util;
+		this.annonce = annonce;
 	}
 	
 	/**

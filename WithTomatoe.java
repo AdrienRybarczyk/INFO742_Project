@@ -9,7 +9,7 @@ public class WithTomatoe extends PlatDecorator{
 	public void getIngredients() {
 		super.getIngredients();
 		Logger logger = Logger.getInstance();
-		logger.info(", avec des tomates");
+		logger.decorator(", avec des tomates");
 	}
 
 

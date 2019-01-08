@@ -9,7 +9,7 @@ public class WithoutGluten extends PlatDecorator{
 	public void getIngredients() {
 		super.getIngredients();
 		Logger logger = Logger.getInstance();
-		logger.info(", sans gluten");
+		logger.decorator(", sans gluten");
 	}
 
 
