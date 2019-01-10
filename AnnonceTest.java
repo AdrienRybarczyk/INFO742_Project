@@ -16,6 +16,7 @@ class AnnonceTest {
 	
 	@Test
 	void testRemoveCommentaire() {
+		//Test vrai en ajoutant puis supprimant un commentaire
 		Commentaire com=new Commentaire("coucou",new Utilisateur(null, null, null, null, null, null),annonce);
 		boolean test=true;
 		annonce.addCommentaire(com);
@@ -27,6 +28,7 @@ class AnnonceTest {
 		}
 		assertTrue("Le commentaire a bien ete retire de la liste", test);
 			
+		//Test faux on ne retire pas le commentaire de la liste
 		test=true;
 		annonce.addCommentaire(com);
 		for(Commentaire i:annonce.getListeCommentaire()) {

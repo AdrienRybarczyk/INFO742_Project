@@ -24,12 +24,15 @@ public class PlatStore extends Lobby{
 		lobby.notifyObservers(lastNews);
 	}
 	
+	
+	//Affichage via le Logger des informations de toutes les Annonces
 	public void getInformationFromAnnonces() {
 		for (Annonce an: liste_annonces){
 			Logger.getInstance().info("Title : "+ an.getTitre() +" From Utilisateur " + an.getUtil().getNom()+ " " + an.getUtil().getPrenom() + " about " + an.getDescription() + " at " + an.getAdresse() + " etat " + an.isEtat());
 		}	
 	}
 	
+	//Affichage via le Logger des informations de toutes les Annonces disponibles
 	public void getInformationFromAnnoncesDisponibles() {
 		for (Annonce an: liste_annonces){
 			if(an.isEtat()==true) {
@@ -38,6 +41,7 @@ public class PlatStore extends Lobby{
 		}
 	}
 	
+	//Recupere une annonce donnée parmi la liste
 	public Annonce getInformationFromSpecificAnnonce(int id) {
 		for (Annonce an: liste_annonces){
 			if(an.getId()==id) {
@@ -47,6 +51,7 @@ public class PlatStore extends Lobby{
 		return null;
 	}
 	
+	//Retourne la liste des Annonces disponibles
 	public List<Annonce> getListeAnnonceDisponible(){
 		List<Annonce> annoncedispo = new ArrayList<Annonce>();
 		for (Annonce an: liste_annonces){
@@ -57,6 +62,7 @@ public class PlatStore extends Lobby{
 		return annoncedispo;
 	}
 	
+	//Recherche avec un filtre sur le titre et la description des annonces
 	public List<Annonce> rechercheFiltre(String filtre){
 		List<Annonce> annoncefiltre = new ArrayList<Annonce>();
 		for (Annonce an: liste_annonces){

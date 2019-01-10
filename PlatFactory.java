@@ -1,6 +1,6 @@
 
 public class PlatFactory {
-	//We can add others conditions for new plats
+	//We can add others conditions for new dishes
 	public static Plat createPlat(String type){
 		if("Americain".equalsIgnoreCase(type)) return new Americain();
 		else if("Italien".equalsIgnoreCase(type)) return new Italien();

@@ -11,7 +11,7 @@ public class Utilisateur implements Observer {
 	public String mail;
 	public String password;
 	public List<Annonce> annonces;
-	public List<Avis> liste_avis;
+	public List<Avis> liste_avis_emis;
 	public List<Avis> liste_avis_recu;
 	public List<Commentaire> liste_commentaire;
 	public PlatStore store;
@@ -24,19 +24,21 @@ public class Utilisateur implements Observer {
 		this.ecole = ecole;
 		this.mail = mail;
 		this.password = password;
-		this.liste_avis = new ArrayList<Avis>();
+		this.liste_avis_emis = new ArrayList<Avis>();
 		this.liste_avis_recu = new ArrayList<Avis>();
 		this.annonces = new ArrayList<Annonce>();
 		this.liste_commentaire = new ArrayList<Commentaire>();
 		this.store = store;
 	}
 
+	//Deposer une annonce
 	public void deposerAnnonce(String type, String adresse, String description, String titre) {
 		Annonce an= new Annonce(type, adresse,description,titre,this);
 		store.registerAnnonce(an);
 		annonces.add(an);
 	}
 	
+	//Supprimer une annonce
 	public void supprimerAnnonce(Annonce an){
 		store.removeAnnonce(an);
 		annonces.remove(an);
@@ -56,11 +58,11 @@ public class Utilisateur implements Observer {
 	
 	
 	public void ajouterAvis(Avis av) {
-		liste_avis.add(av);
+		liste_avis_emis.add(av);
 	}
 	
 	public void supprimerAvis(Avis av){
-		liste_avis.remove(av);
+		liste_avis_emis.remove(av);
 	}
 	
 	public void ajouterAvisRecu(Avis av) {
@@ -71,6 +73,7 @@ public class Utilisateur implements Observer {
 		liste_avis_recu.remove(av);
 	}
 	
+	//Creer un commentaire sur une annonce
 	public void createCommentaire(String description,Annonce an) {
 		Commentaire newComment = new Commentaire(description,this,an);
 		liste_commentaire.add(newComment);
@@ -87,15 +90,17 @@ public class Utilisateur implements Observer {
 		an.removeCommentaire(com);
 	}
 	
+	//Creer un avis sur un utilisateur
 	public void creerAvis(String description, Utilisateur util) {
-		Avis newAvis = new Avis(description,this);
+		Avis newAvis = new Avis(description,this,util);
 		this.ajouterAvis(newAvis);
 		util.ajouterAvisRecu(newAvis);
 	}
 	
+	//Consulter les avis reçus
 	public void consulterAvis() {
 		for (Avis av: liste_avis_recu){
-			Logger.getInstance().info("Avis recu: "+ av.getDescription() + " from "+ av.util.getNom() + " " + av.util.getPrenom());		
+			Logger.getInstance().info("Avis recu: "+ av.getDescription() + " from "+ av.util_emetteur.getNom() + " " + av.util_emetteur.getPrenom());		
 		}
 	}
 	

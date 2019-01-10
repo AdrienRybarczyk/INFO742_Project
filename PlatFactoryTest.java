@@ -13,15 +13,15 @@ class PlatFactoryTest {
 
 	@Test
 	void testCreatePlat() {
-		String type = "";
+		String type = "";//Test avec chaine vide
 		assertFalse("Erreur pas de type spécifié", platFactory.createPlat(type) instanceof Plat);
-		type = "Francais";
+		type = "Francais";//Test avec type non existant
 		assertFalse("Mauvais type spécifié", platFactory.createPlat(type) instanceof Plat);
-		type = "Americain";
+		type = "Americain";//Test type Américain
 		assertTrue("Plat Americain", platFactory.createPlat(type) instanceof Americain);
-		type = "Italien";
+		type = "Italien";//Test type Italien
 		assertTrue("Plat Italien", platFactory.createPlat(type) instanceof Italien);
-		type = "Vietnamien";
+		type = "Vietnamien";//Test type Vietnamien
 		assertTrue("Plat Vietnamien", platFactory.createPlat(type) instanceof Vietnamien);
 	}
 }

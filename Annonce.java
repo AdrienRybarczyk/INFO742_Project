@@ -26,10 +26,12 @@ public class Annonce {
 		this.liste_commentaire = new ArrayList<Commentaire>();
 	}
 	
+	//Ajout d'un commentaire pour l'annonce
 	public void addCommentaire(Commentaire com) {
 		liste_commentaire.add(com);
 	}
 	
+	//Suppression d'un commentaire pour l'annonce
 	public void removeCommentaire(Commentaire com) {
 		liste_commentaire.remove(com);
 	}
@@ -38,6 +40,8 @@ public class Annonce {
 		return liste_commentaire;
 	}
 	
+	
+	//Detail du commentaire en utilisant le Logger
 	public void getInformationFromCommentaire() {
 		for (Commentaire com: liste_commentaire){
 			Logger.getInstance().info("Comment from "+ com.getUtil().getNom() + " "+ com.getUtil().getPrenom() + com.getUtil().getMail() + " about " + com.getDescription());			

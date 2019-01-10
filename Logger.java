@@ -12,12 +12,13 @@ public class Logger {
 	public void info(String message) {
 		System.out.println("info: "+message);
 	}
-	//Utilization of error to print message in red
+	//Use of System.error to print message in red
 	public void warning(String message) {
 		System.err.println("warning: "+message);
 	}
 	
+	//Fonction utilisée pour print les différents ingrédients d'un plat
 	public void decorator(String message) {
-		System.out.println("avec"+message);
+		System.out.println(message);
 	}
 }
